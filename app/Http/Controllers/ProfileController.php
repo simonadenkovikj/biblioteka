@@ -65,7 +65,7 @@ class ProfileController extends Controller
             // avoid double OTP check
             session(["2fa_checked" => true]);
 
-            return redirect(action('ProfileController@twofa'));
+            return redirect(route('profile.twofa'));
         }
 
         throw ValidationException::withMessages([
