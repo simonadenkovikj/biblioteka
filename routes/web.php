@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,9 @@ Route::post('/custom-login', [CustomAuthController::class, 'customLogin'])->name
 Route::get('/registration', [CustomAuthController::class, 'registration'])->name('register-user');
 Route::post('/custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom'); 
 Route::get('/signout', [CustomAuthController::class, 'signOut'])->name('signout');
+
+Route::get('/app/profile/2fa', [ProfileController::class, 'twofa'])->name('profile.twofa');
+Route::post('/app/profile/2fa', [ProfileController::class, 'twofaEnable'])->name('profile.twofaEnable');
+
+Route::get('/login/otp', 'OTPController@show');
+Route::post('/login/otp', 'App\Http\Controllers\OTPController@check');
